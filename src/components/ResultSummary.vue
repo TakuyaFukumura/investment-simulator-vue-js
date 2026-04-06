@@ -1,6 +1,6 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-import { useInvestmentStore } from '../stores/investmentStore'
+<script lang="ts" setup>
+import {computed} from 'vue'
+import {useInvestmentStore} from '../stores/investmentStore'
 
 const store = useInvestmentStore()
 
@@ -30,8 +30,8 @@ const gainRatio = computed(() => {
       <v-row>
         <v-col cols="12" sm="4">
           <div
-            class="result-card pa-4 rounded-lg text-center"
-            style="background: rgba(92, 107, 192, 0.12); border: 1px solid rgba(92, 107, 192, 0.3)"
+              class="result-card pa-4 rounded-lg text-center"
+              style="background: rgba(92, 107, 192, 0.12); border: 1px solid rgba(92, 107, 192, 0.3)"
           >
             <div class="text-caption text-medium-emphasis mb-1">総投資額</div>
             <div class="text-h6 font-weight-bold text-primary">
@@ -41,8 +41,8 @@ const gainRatio = computed(() => {
         </v-col>
         <v-col cols="12" sm="4">
           <div
-            class="result-card pa-4 rounded-lg text-center"
-            style="background: rgba(66, 165, 245, 0.12); border: 1px solid rgba(66, 165, 245, 0.3)"
+              class="result-card pa-4 rounded-lg text-center"
+              style="background: rgba(66, 165, 245, 0.12); border: 1px solid rgba(66, 165, 245, 0.3)"
           >
             <div class="text-caption text-medium-emphasis mb-1">最終資産額</div>
             <div class="text-h6 font-weight-bold" style="color: #42A5F5">
@@ -52,8 +52,8 @@ const gainRatio = computed(() => {
         </v-col>
         <v-col cols="12" sm="4">
           <div
-            class="result-card pa-4 rounded-lg text-center"
-            style="background: rgba(126, 87, 194, 0.12); border: 1px solid rgba(126, 87, 194, 0.3)"
+              class="result-card pa-4 rounded-lg text-center"
+              style="background: rgba(126, 87, 194, 0.12); border: 1px solid rgba(126, 87, 194, 0.3)"
           >
             <div class="text-caption text-medium-emphasis mb-1">運用益（利益率）</div>
             <div class="text-h6 font-weight-bold text-secondary">

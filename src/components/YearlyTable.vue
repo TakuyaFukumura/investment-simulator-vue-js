@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { useInvestmentStore } from '../stores/investmentStore'
+<script lang="ts" setup>
+import {useInvestmentStore} from '../stores/investmentStore'
 
 const store = useInvestmentStore()
 
@@ -21,30 +21,30 @@ function formatCurrency(value: number): string {
       </div>
     </v-card-title>
     <v-card-text class="px-0 pb-4">
-      <v-table density="compact" class="yearly-table">
+      <v-table class="yearly-table" density="compact">
         <thead>
-          <tr>
-            <th class="text-center">年数</th>
-            <th class="text-right">累計投資額</th>
-            <th class="text-right">運用益</th>
-            <th class="text-right">評価額</th>
-            <th class="text-right">利益率</th>
-          </tr>
+        <tr>
+          <th class="text-center">年数</th>
+          <th class="text-right">累計投資額</th>
+          <th class="text-right">運用益</th>
+          <th class="text-right">評価額</th>
+          <th class="text-right">利益率</th>
+        </tr>
         </thead>
         <tbody>
-          <tr v-for="row in store.yearlyData" :key="row.year">
-            <td class="text-center text-medium-emphasis">{{ row.year }}年目</td>
-            <td class="text-right">{{ formatCurrency(row.totalInvested) }}</td>
-            <td class="text-right" style="color: #42A5F5">
-              +{{ formatCurrency(row.investmentGain) }}
-            </td>
-            <td class="text-right font-weight-medium">
-              {{ formatCurrency(row.totalAssets) }}
-            </td>
-            <td class="text-right" style="color: #7E57C2">
-              {{ row.totalInvested > 0 ? ((row.investmentGain / row.totalInvested) * 100).toFixed(1) : '0.0' }}%
-            </td>
-          </tr>
+        <tr v-for="row in store.yearlyData" :key="row.year">
+          <td class="text-center text-medium-emphasis">{{ row.year }}年目</td>
+          <td class="text-right">{{ formatCurrency(row.totalInvested) }}</td>
+          <td class="text-right" style="color: #42A5F5">
+            +{{ formatCurrency(row.investmentGain) }}
+          </td>
+          <td class="text-right font-weight-medium">
+            {{ formatCurrency(row.totalAssets) }}
+          </td>
+          <td class="text-right" style="color: #7E57C2">
+            {{ row.totalInvested > 0 ? ((row.investmentGain / row.totalInvested) * 100).toFixed(1) : '0.0' }}%
+          </td>
+        </tr>
         </tbody>
       </v-table>
     </v-card-text>

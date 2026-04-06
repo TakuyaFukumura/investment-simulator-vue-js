@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import InputForm from './components/InputForm.vue'
 import ResultSummary from './components/ResultSummary.vue'
 import GrowthChart from './components/GrowthChart.vue'
@@ -8,11 +8,11 @@ import YearlyTable from './components/YearlyTable.vue'
 <template>
   <v-app>
     <v-main style="background: #0D1117">
-      <v-container fluid class="pa-4 pa-md-6" style="max-width: 1200px">
+      <v-container class="pa-4 pa-md-6" fluid style="max-width: 1200px">
         <!-- Header -->
         <div class="text-center mb-8">
           <div class="d-flex align-center justify-center ga-2 mb-2">
-            <v-icon size="36" color="primary">mdi-trending-up</v-icon>
+            <v-icon color="primary" size="36">mdi-trending-up</v-icon>
             <h1 class="text-h4 font-weight-bold gradient-text">
               積立投資シミュレーター
             </h1>
@@ -25,28 +25,28 @@ import YearlyTable from './components/YearlyTable.vue'
         <!-- Input Form -->
         <v-row class="mb-4">
           <v-col cols="12">
-            <InputForm />
+            <InputForm/>
           </v-col>
         </v-row>
 
         <!-- Result Summary -->
         <v-row class="mb-4">
           <v-col cols="12">
-            <ResultSummary />
+            <ResultSummary/>
           </v-col>
         </v-row>
 
         <!-- Chart -->
         <v-row class="mb-4">
           <v-col cols="12">
-            <GrowthChart />
+            <GrowthChart/>
           </v-col>
         </v-row>
 
         <!-- Yearly Table -->
         <v-row class="mb-4">
           <v-col cols="12">
-            <YearlyTable />
+            <YearlyTable/>
           </v-col>
         </v-row>
 

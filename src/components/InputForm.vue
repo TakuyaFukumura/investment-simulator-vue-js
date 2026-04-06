@@ -1,11 +1,11 @@
-<script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useInvestmentStore } from '../stores/investmentStore'
-import type { InvestmentParams } from '../stores/investmentStore'
+<script lang="ts" setup>
+import {ref, watch} from 'vue'
+import type {InvestmentParams} from '../stores/investmentStore'
+import {useInvestmentStore} from '../stores/investmentStore'
 
 const store = useInvestmentStore()
 
-const form = ref<InvestmentParams>({ ...store.params })
+const form = ref<InvestmentParams>({...store.params})
 const errors = ref<Partial<Record<keyof InvestmentParams, string>>>({})
 
 function validate(): boolean {
@@ -31,16 +31,16 @@ function validate(): boolean {
 
 function simulate() {
   if (validate()) {
-    store.updateParams({ ...form.value })
+    store.updateParams({...form.value})
   }
 }
 
 watch(
-  () => form.value,
-  () => {
-    errors.value = {}
-  },
-  { deep: true }
+    () => form.value,
+    () => {
+      errors.value = {}
+    },
+    {deep: true}
 )
 </script>
 
@@ -56,75 +56,75 @@ watch(
       <v-row>
         <v-col cols="12" sm="6">
           <v-text-field
-            v-model.number="form.initialAmount"
-            label="初期投資額（円）"
-            type="number"
-            min="0"
-            step="10000"
-            prepend-inner-icon="mdi-cash"
-            variant="outlined"
-            density="comfortable"
-            :error-messages="errors.initialAmount"
-            hide-spin-buttons
+              v-model.number="form.initialAmount"
+              :error-messages="errors.initialAmount"
+              density="comfortable"
+              hide-spin-buttons
+              label="初期投資額（円）"
+              min="0"
+              prepend-inner-icon="mdi-cash"
+              step="10000"
+              type="number"
+              variant="outlined"
           />
         </v-col>
         <v-col cols="12" sm="6">
           <v-text-field
-            v-model.number="form.monthlyAmount"
-            label="毎月積立額（円）"
-            type="number"
-            min="0"
-            step="1000"
-            prepend-inner-icon="mdi-calendar-month"
-            variant="outlined"
-            density="comfortable"
-            :error-messages="errors.monthlyAmount"
-            hide-spin-buttons
+              v-model.number="form.monthlyAmount"
+              :error-messages="errors.monthlyAmount"
+              density="comfortable"
+              hide-spin-buttons
+              label="毎月積立額（円）"
+              min="0"
+              prepend-inner-icon="mdi-calendar-month"
+              step="1000"
+              type="number"
+              variant="outlined"
           />
         </v-col>
         <v-col cols="12" sm="6">
           <v-text-field
-            v-model.number="form.years"
-            label="投資期間（年）"
-            type="number"
-            min="1"
-            max="50"
-            step="1"
-            prepend-inner-icon="mdi-clock-outline"
-            variant="outlined"
-            density="comfortable"
-            :error-messages="errors.years"
-            hide-spin-buttons
+              v-model.number="form.years"
+              :error-messages="errors.years"
+              density="comfortable"
+              hide-spin-buttons
+              label="投資期間（年）"
+              max="50"
+              min="1"
+              prepend-inner-icon="mdi-clock-outline"
+              step="1"
+              type="number"
+              variant="outlined"
           />
         </v-col>
         <v-col cols="12" sm="6">
           <v-text-field
-            v-model.number="form.annualRate"
-            label="期待利回り（年率 %）"
-            type="number"
-            min="0.01"
-            max="50"
-            step="0.1"
-            prepend-inner-icon="mdi-percent"
-            variant="outlined"
-            density="comfortable"
-            :error-messages="errors.annualRate"
-            hide-spin-buttons
+              v-model.number="form.annualRate"
+              :error-messages="errors.annualRate"
+              density="comfortable"
+              hide-spin-buttons
+              label="期待利回り（年率 %）"
+              max="50"
+              min="0.01"
+              prepend-inner-icon="mdi-percent"
+              step="0.1"
+              type="number"
+              variant="outlined"
           />
         </v-col>
         <v-col cols="12">
           <div class="text-body-2 text-medium-emphasis mb-2">利回り方式</div>
           <v-btn-toggle
-            v-model="form.interestType"
-            mandatory
-            color="primary"
-            rounded="lg"
-            density="comfortable"
+              v-model="form.interestType"
+              color="primary"
+              density="comfortable"
+              mandatory
+              rounded="lg"
           >
-            <v-btn value="compound" prepend-icon="mdi-chart-line-variant">
+            <v-btn prepend-icon="mdi-chart-line-variant" value="compound">
               複利
             </v-btn>
-            <v-btn value="simple" prepend-icon="mdi-chart-timeline-variant">
+            <v-btn prepend-icon="mdi-chart-timeline-variant" value="simple">
               単利
             </v-btn>
           </v-btn-toggle>
@@ -133,13 +133,13 @@ watch(
     </v-card-text>
     <v-card-actions class="px-6 pb-6">
       <v-btn
-        color="primary"
-        variant="elevated"
-        size="large"
-        block
-        prepend-icon="mdi-play-circle"
-        @click="simulate"
-        :style="{ background: 'linear-gradient(135deg, #5C6BC0, #42A5F5)' }"
+          :style="{ background: 'linear-gradient(135deg, #5C6BC0, #42A5F5)' }"
+          block
+          color="primary"
+          prepend-icon="mdi-play-circle"
+          size="large"
+          variant="elevated"
+          @click="simulate"
       >
         シミュレーション実行
       </v-btn>

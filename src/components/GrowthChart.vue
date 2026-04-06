@@ -1,29 +1,29 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-import { Line } from 'vue-chartjs'
+<script lang="ts" setup>
+import {computed} from 'vue'
+import {Line} from 'vue-chartjs'
+import type {TooltipItem} from 'chart.js'
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
-  Filler,
 } from 'chart.js'
-import type { TooltipItem } from 'chart.js'
-import { useInvestmentStore } from '../stores/investmentStore'
+import {useInvestmentStore} from '../stores/investmentStore'
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
 )
 
 const store = useInvestmentStore()
@@ -69,7 +69,7 @@ const chartOptions = computed(() => ({
         color: '#9ca3af',
         usePointStyle: true,
         pointStyleWidth: 12,
-        font: { size: 12 },
+        font: {size: 12},
       },
     },
     tooltip: {
@@ -87,13 +87,13 @@ const chartOptions = computed(() => ({
   },
   scales: {
     x: {
-      ticks: { color: '#6b7280', font: { size: 11 } },
-      grid: { color: 'rgba(255,255,255,0.05)' },
+      ticks: {color: '#6b7280', font: {size: 11}},
+      grid: {color: 'rgba(255,255,255,0.05)'},
     },
     y: {
       ticks: {
         color: '#6b7280',
-        font: { size: 11 },
+        font: {size: 11},
         callback(value: number | string) {
           const num = typeof value === 'string' ? parseFloat(value) : value
           if (num >= 100000000) return `${(num / 100000000).toFixed(1)}億`
@@ -101,7 +101,7 @@ const chartOptions = computed(() => ({
           return value
         },
       },
-      grid: { color: 'rgba(255,255,255,0.05)' },
+      grid: {color: 'rgba(255,255,255,0.05)'},
     },
   },
 }))
@@ -117,7 +117,7 @@ const chartOptions = computed(() => ({
     </v-card-title>
     <v-card-text class="px-4 pb-6">
       <div style="height: 360px; position: relative">
-        <Line :data="chartData" :options="chartOptions" />
+        <Line :data="chartData" :options="chartOptions"/>
       </div>
     </v-card-text>
   </v-card>
