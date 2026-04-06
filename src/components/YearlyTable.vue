@@ -24,11 +24,11 @@ function formatCurrency(value: number): string {
       <v-table class="yearly-table" density="compact">
         <thead>
         <tr>
-          <th class="text-center">年数</th>
-          <th class="text-right">累計投資額</th>
-          <th class="text-right">運用益</th>
-          <th class="text-right">評価額</th>
-          <th class="text-right">利益率</th>
+          <th class="text-center" scope="col">年数</th>
+          <th class="text-right" scope="col">累計投資額</th>
+          <th class="text-right" scope="col">運用益</th>
+          <th class="text-right" scope="col">評価額</th>
+          <th class="text-right" scope="col">利益率</th>
         </tr>
         </thead>
         <tbody>
@@ -53,8 +53,8 @@ function formatCurrency(value: number): string {
 
 <style scoped>
 .yearly-table th {
-  background: rgba(92, 107, 192, 0.15) !important;
-  color: #9ca3af !important;
+  background: #dbeafe !important;
+  color: #0f172a !important;
   font-size: 0.8rem !important;
   padding: 10px 16px !important;
   white-space: nowrap;
