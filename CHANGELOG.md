@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-04-06
+
+### Fixed
+
+- Vuetify 4 対応: `v-btn-toggle` に `variant="outlined"`・`divided`・`base-color` を追加し、ボタンの表示崩れを修正
+- `v-app` に `theme="dark"` を明示的に設定し、Vuetify 4 でダークテーマが正しく適用されるよう修正
+- `v-main` の背景色をハードコードから CSS 変数（`rgb(var(--v-theme-background))`）に変更
+- 年次データ一覧のテーブルヘッダー背景色をダークテーマに合わせた色に修正（ライトブルー → テーマカラーベースの半透明）
+
+[0.1.1]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/compare/v0.1.0...v0.1.1
+
 ## [0.1.0] - 2026-04-06
 
 ### Added

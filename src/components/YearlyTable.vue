@@ -53,8 +53,8 @@ function formatCurrency(value: number): string {
 
 <style scoped>
 .yearly-table th {
-  background: #dbeafe !important;
-  color: #0f172a !important;
+  background: rgba(92, 107, 192, 0.2) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
   font-size: 0.8rem !important;
   padding: 10px 16px !important;
   white-space: nowrap;

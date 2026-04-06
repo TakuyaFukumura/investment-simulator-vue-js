@@ -6,8 +6,8 @@ import YearlyTable from './components/YearlyTable.vue'
 </script>
 
 <template>
-  <v-app>
-    <v-main style="background: #0D1117">
+  <v-app theme="dark">
+    <v-main style="background: rgb(var(--v-theme-background))">
       <v-container class="pa-4 pa-md-6" fluid style="max-width: 1200px">
         <!-- Header -->
         <div class="text-center mb-8">

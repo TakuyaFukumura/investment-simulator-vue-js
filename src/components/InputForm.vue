@@ -116,10 +116,12 @@ watch(
           <div class="text-body-2 text-medium-emphasis mb-2">利回り方式</div>
           <v-btn-toggle
               v-model="form.interestType"
+              base-color="primary"
               color="primary"
-              density="comfortable"
+              divided
               mandatory
               rounded="lg"
+              variant="outlined"
           >
             <v-btn prepend-icon="mdi-chart-line-variant" value="compound">
               複利
