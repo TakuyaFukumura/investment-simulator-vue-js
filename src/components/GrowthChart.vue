@@ -94,8 +94,8 @@ const chartOptions = computed(() => ({
       ticks: {
         color: '#6b7280',
         font: {size: 11},
-        callback(value: number | string) {
-          const num = typeof value === 'string' ? parseFloat(value) : value
+        callback: (value: number | string) => {
+          const num = typeof value === 'string' ? Number.parseFloat(value) : value
           if (num >= 100000000) return `${(num / 100000000).toFixed(1)}億`
           if (num >= 10000) return `${(num / 10000).toFixed(0)}万`
           return value

@@ -76,17 +76,9 @@ export const useInvestmentStore = defineStore('investment', () => {
         return result
     })
 
-    const finalAssets = computed(() => {
-        return yearlyData.value.length > 0
-            ? yearlyData.value[yearlyData.value.length - 1].totalAssets
-            : 0
-    })
+    const finalAssets = computed(() => yearlyData.value.at(-1)?.totalAssets ?? 0)
 
-    const totalInvested = computed(() => {
-        return yearlyData.value.length > 0
-            ? yearlyData.value[yearlyData.value.length - 1].totalInvested
-            : 0
-    })
+    const totalInvested = computed(() => yearlyData.value.at(-1)?.totalInvested ?? 0)
 
     const totalGain = computed(() => finalAssets.value - totalInvested.value)
 
