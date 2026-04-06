@@ -7,12 +7,6 @@ Vue.js 3 + TypeScript + Vite で構築した積立投資シミュレーション
 
 ---
 
-## スクリーンショット
-
-<img src="https://github.com/user-attachments/assets/643e7a68-3490-4cb5-9b01-f32b9fadeeb7" alt="App Screenshot" width="800">
-
----
-
 ## 機能
 
 | 機能 | 説明 |
@@ -92,36 +86,6 @@ src/
   main.ts
   style.css
 ```
-
----
-
-## 計算ロジック
-
-### 複利（月次複利）
-
-```
-毎月: 資産 = 資産 × (1 + 年利/12) + 毎月積立額
-```
-
-### 単利
-
-```
-各年の運用益 = 初期投資額 × 年利 × 経過年数
-            + 各年の積立合計 × 年利 × 平均保有期間（yearsRemaining - 0.5）
-```
-
----
-
-## CI / 開発フロー
-
-- **GitHub Actions**: プッシュ・PR 時に型チェックとビルドを自動実行
-- **Dependabot**: npm および GitHub Actions の依存関係を毎週自動更新
-
----
-
-## ライセンス
-
-MIT
 
 ---
 
