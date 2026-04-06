@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: #0D1117;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #5C6BC0, #42A5F5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-glow {
+  box-shadow: 0 0 20px rgba(92, 107, 192, 0.15) !important;
+}
