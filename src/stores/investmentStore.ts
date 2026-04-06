@@ -3,7 +3,6 @@ import {computed, ref} from 'vue'
 
 export interface YearlyData {
     year: number
-    principal: number
     investmentGain: number
     totalInvested: number
     totalAssets: number
@@ -42,10 +41,9 @@ export const useInvestmentStore = defineStore('investment', () => {
                 const investmentGain = totalAssets - totalInvested
                 result.push({
                     year: y,
-                    principal: totalInvested,
-                    investmentGain: Math.round(investmentGain),
-                    totalInvested: Math.round(totalInvested),
-                    totalAssets: Math.round(totalAssets),
+                    investmentGain,
+                    totalInvested,
+                    totalAssets,
                 })
             }
         } else {
@@ -64,14 +62,13 @@ export const useInvestmentStore = defineStore('investment', () => {
                     // (average holding period within the year is ~6 months, i.e. 0.5 years)
                     monthlyContributionGain += monthlyAmount * 12 * rate * (yearsRemaining - 0.5)
                 }
-                const totalGain = initialGain + monthlyContributionGain
-                const totalAssets = totalInvested + totalGain
+                const investmentGain = initialGain + monthlyContributionGain
+                const totalAssets = totalInvested + investmentGain
                 result.push({
                     year: y,
-                    principal: totalInvested,
-                    investmentGain: Math.round(totalGain),
-                    totalInvested: Math.round(totalInvested),
-                    totalAssets: Math.round(totalAssets),
+                    investmentGain,
+                    totalInvested,
+                    totalAssets,
                 })
             }
         }

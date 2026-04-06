@@ -32,7 +32,7 @@ const chartData = computed(() => ({
   labels: store.yearlyData.map((d) => `${d.year}年目`),
   datasets: [
     {
-      label: '最終評価額',
+      label: '評価額',
       data: store.yearlyData.map((d) => d.totalAssets),
       borderColor: '#42A5F5',
       backgroundColor: 'rgba(66, 165, 245, 0.1)',

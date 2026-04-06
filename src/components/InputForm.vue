@@ -19,8 +19,8 @@ function validate(): boolean {
   if (form.value.years < 1 || form.value.years > 50) {
     errors.value.years = '投資期間は1〜50年で入力してください'
   }
-  if (form.value.annualRate < 0.01 || form.value.annualRate > 50) {
-    errors.value.annualRate = '期待利回りは0.01〜50%で入力してください'
+  if (form.value.annualRate < 0 || form.value.annualRate > 50) {
+    errors.value.annualRate = '期待利回りは0〜50%で入力してください'
   }
   if (form.value.initialAmount === 0 && form.value.monthlyAmount === 0) {
     errors.value.initialAmount = '初期投資額を入力するか、毎月積立額を設定してください'
@@ -105,7 +105,7 @@ watch(
               hide-spin-buttons
               label="期待利回り（年率 %）"
               max="50"
-              min="0.01"
+              min="0"
               prepend-inner-icon="mdi-percent"
               step="0.1"
               type="number"
