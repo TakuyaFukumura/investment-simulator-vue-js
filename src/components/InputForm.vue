@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import {ref, watch} from 'vue'
+import type {InvestmentParams} from '../stores/investmentStore'
 import {useInvestmentStore} from '../stores/investmentStore'
 
 const store = useInvestmentStore()
+
+const YEN_PER_MAN = 10000
 
 // form は表示用に万円単位で保持する（InvestmentParams とは単位が異なる）
 interface InvestmentFormValues {
@@ -10,13 +13,13 @@ interface InvestmentFormValues {
   monthlyAmount: number  // 万円単位
   years: number
   annualRate: number
-  interestType: 'compound' | 'simple'
+  interestType: InvestmentParams['interestType']
 }
 
 const form = ref<InvestmentFormValues>({
   ...store.params,
-  initialAmount: Math.round(store.params.initialAmount / 10000),
-  monthlyAmount: Math.round(store.params.monthlyAmount / 10000),
+  initialAmount: Math.round(store.params.initialAmount / YEN_PER_MAN),
+  monthlyAmount: Math.round(store.params.monthlyAmount / YEN_PER_MAN),
 })
 const errors = ref<Partial<Record<keyof InvestmentFormValues, string>>>({})
 
@@ -45,8 +48,8 @@ function simulate() {
   if (validate()) {
     store.updateParams({
       ...form.value,
-      initialAmount: Math.round(form.value.initialAmount * 10000),
-      monthlyAmount: Math.round(form.value.monthlyAmount * 10000),
+      initialAmount: Math.round(form.value.initialAmount * YEN_PER_MAN),
+      monthlyAmount: Math.round(form.value.monthlyAmount * YEN_PER_MAN),
     })
   }
 }
