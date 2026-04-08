@@ -18,9 +18,9 @@ export interface InvestmentParams {
 
 export const useInvestmentStore = defineStore('investment', () => {
     const params = ref<InvestmentParams>({
-        initialAmount: 1000000,
-        monthlyAmount: 30000,
-        years: 20,
+        initialAmount: 15000000,
+        monthlyAmount: 70000,
+        years: 40,
         annualRate: 5,
         interestType: 'compound',
     })
