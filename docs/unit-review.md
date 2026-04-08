@@ -78,9 +78,22 @@
 `form` の初期値は `store.params` から生成されています。
 ストアが円単位で値を持つため、フォームへの初期化時に万円単位へ変換します。
 
+> **型について**: ストアの `InvestmentParams` は `initialAmount`・`monthlyAmount` を円単位で保持する型です。
+> フォーム用のオブジェクトは同じプロパティ名を持ちますが、`initialAmount`・`monthlyAmount` の単位が万円となり意味が異なります。
+> 実装時は混乱を防ぐため、フォーム用に `InvestmentFormValues`（仮称）のような別型を定義するか、
+> 変数名・コメントで「万円単位」であることを明示してください。
+
 ```diff
 -const form = ref<InvestmentParams>({...store.params})
-+const form = ref({
++// form は表示用に万円単位で保持する（InvestmentParams とは単位が異なる）
++interface InvestmentFormValues {
++  initialAmount: number  // 万円単位
++  monthlyAmount: number  // 万円単位
++  years: number
++  annualRate: number
++  interestType: 'compound' | 'simple'
++}
++const form = ref<InvestmentFormValues>({
 +  ...store.params,
 +  initialAmount: store.params.initialAmount / 10000,
 +  monthlyAmount: store.params.monthlyAmount / 10000,
@@ -108,9 +121,20 @@
 | 初期投資額 | 10000 | 1 |
 | 毎月積立額 | 1000 | 1 |
 
+> **小数入力の取り扱い**: ストアは円単位（整数）で値を保持するため、フォームへの小数入力は許容しません。
+> `step="1"` を指定することで万円単位の整数のみ入力を受け付けます。
+> デフォルト値（1,500万円・7万円）はいずれも 1万円単位で割り切れるため、初期化時に小数は発生しません。
+> ただし将来的にストア値が 10,000 円単位でない場合に備え、初期化時に `Math.round` で整数に丸めることを推奨します。
+>
+> ```ts
+> initialAmount: Math.round(store.params.initialAmount / 10000),
+> monthlyAmount: Math.round(store.params.monthlyAmount / 10000),
+> ```
+
 #### 5.2.4 シミュレーション実行時の単位変換
 
 `simulate()` 関数でストアに渡す前に、万円から円への変換を行います。
+浮動小数点誤差（例: `0.1 * 10000 = 999.9999...`）を防ぐため、`Math.round` で整数化します。
 
 ```diff
  function simulate() {
@@ -118,8 +142,8 @@
 -    store.updateParams({...form.value})
 +    store.updateParams({
 +      ...form.value,
-+      initialAmount: form.value.initialAmount * 10000,
-+      monthlyAmount: form.value.monthlyAmount * 10000,
++      initialAmount: Math.round(form.value.initialAmount * 10000),
++      monthlyAmount: Math.round(form.value.monthlyAmount * 10000),
 +    })
    }
  }
