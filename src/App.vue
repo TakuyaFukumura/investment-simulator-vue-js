@@ -7,7 +7,7 @@ import YearlyTable from './components/YearlyTable.vue'
 
 <template>
   <v-app>
-    <v-main style="background: #0D1117">
+    <v-main>
       <v-container class="pa-4 pa-md-6" fluid style="max-width: 1200px">
         <!-- Header -->
         <div class="text-center mb-8">

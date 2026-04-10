@@ -1,30 +1,61 @@
 import {createApp} from 'vue'
 import {createPinia} from 'pinia'
 import {createVuetify} from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import {
+    VApp,
+    VBtn,
+    VBtnToggle,
+    VCard,
+    VCardActions,
+    VCardText,
+    VCardTitle,
+    VCol,
+    VContainer,
+    VIcon,
+    VMain,
+    VRow,
+    VTable,
+    VTextField,
+} from 'vuetify/components'
+import {Ripple} from 'vuetify/directives'
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 import './style.css'
 import App from './App.vue'
+import {COLORS} from './constants/colors'
 
 const pinia = createPinia()
 
 const vuetify = createVuetify({
-    components,
-    directives,
+    components: {
+        VApp,
+        VBtn,
+        VBtnToggle,
+        VCard,
+        VCardActions,
+        VCardText,
+        VCardTitle,
+        VCol,
+        VContainer,
+        VIcon,
+        VMain,
+        VRow,
+        VTable,
+        VTextField,
+    },
+    directives: {Ripple},
     theme: {
         defaultTheme: 'dark',
         themes: {
             dark: {
                 dark: true,
                 colors: {
-                    primary: '#5C6BC0',
-                    secondary: '#7E57C2',
-                    accent: '#42A5F5',
-                    background: '#0D1117',
-                    surface: '#161B22',
-                    'surface-variant': '#1E2430',
+                    primary:           COLORS.primary,
+                    secondary:         COLORS.secondary,
+                    accent:            COLORS.accent,
+                    background:        COLORS.background,
+                    surface:           COLORS.surface,
+                    'surface-variant': COLORS.surfaceVariant,
                 },
             },
         },
@@ -32,3 +63,4 @@ const vuetify = createVuetify({
 })
 
 createApp(App).use(pinia).use(vuetify).mount('#app')
+
