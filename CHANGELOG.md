@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-04-08
+
+### Changed
+
+- 初期投資額・毎月積立額の入力単位を「円」から「万円」に変更
+- デフォルト値を変更（初期投資額: 100万円 → 1,500万円、毎月積立額: 3万円 → 7万円、投資期間: 20年 → 40年）
+- バリデーションエラーメッセージに単位（万円）を明記
+
 ## [0.1.0] - 2026-04-06
 
 ### Added
@@ -21,4 +29,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI ワークフロー（型チェック・ビルド）
 - Dependabot による依存関係の自動更新設定
 
+[0.2.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.2.0
 [0.1.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.1.0

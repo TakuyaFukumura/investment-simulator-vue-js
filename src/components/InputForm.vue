@@ -5,16 +5,31 @@ import {useInvestmentStore} from '../stores/investmentStore'
 
 const store = useInvestmentStore()
 
-const form = ref<InvestmentParams>({...store.params})
-const errors = ref<Partial<Record<keyof InvestmentParams, string>>>({})
+const YEN_PER_MAN = 10000
+
+// form は表示用に万円単位で保持する（InvestmentParams とは単位が異なる）
+interface InvestmentFormValues {
+  initialAmount: number  // 万円単位
+  monthlyAmount: number  // 万円単位
+  years: number
+  annualRate: number
+  interestType: InvestmentParams['interestType']
+}
+
+const form = ref<InvestmentFormValues>({
+  ...store.params,
+  initialAmount: Math.round(store.params.initialAmount / YEN_PER_MAN),
+  monthlyAmount: Math.round(store.params.monthlyAmount / YEN_PER_MAN),
+})
+const errors = ref<Partial<Record<keyof InvestmentFormValues, string>>>({})
 
 function validate(): boolean {
   errors.value = {}
   if (form.value.initialAmount < 0) {
-    errors.value.initialAmount = '初期投資額は0以上で入力してください'
+    errors.value.initialAmount = '初期投資額は0以上で入力してください（単位：万円）'
   }
   if (form.value.monthlyAmount < 0) {
-    errors.value.monthlyAmount = '毎月積立額は0以上で入力してください'
+    errors.value.monthlyAmount = '毎月積立額は0以上で入力してください（単位：万円）'
   }
   if (form.value.years < 1 || form.value.years > 50) {
     errors.value.years = '投資期間は1〜50年で入力してください'
@@ -31,7 +46,11 @@ function validate(): boolean {
 
 function simulate() {
   if (validate()) {
-    store.updateParams({...form.value})
+    store.updateParams({
+      ...form.value,
+      initialAmount: Math.round(form.value.initialAmount * YEN_PER_MAN),
+      monthlyAmount: Math.round(form.value.monthlyAmount * YEN_PER_MAN),
+    })
   }
 }
 
@@ -60,10 +79,10 @@ watch(
               :error-messages="errors.initialAmount"
               density="comfortable"
               hide-spin-buttons
-              label="初期投資額（円）"
+              label="初期投資額（万円）"
               min="0"
               prepend-inner-icon="mdi-cash"
-              step="10000"
+              step="1"
               type="number"
               variant="outlined"
           />
@@ -74,10 +93,10 @@ watch(
               :error-messages="errors.monthlyAmount"
               density="comfortable"
               hide-spin-buttons
-              label="毎月積立額（円）"
+              label="毎月積立額（万円）"
               min="0"
               prepend-inner-icon="mdi-calendar-month"
-              step="1000"
+              step="1"
               type="number"
               variant="outlined"
           />
