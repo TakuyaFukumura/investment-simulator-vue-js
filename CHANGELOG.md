@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-04-10
+
+### Changed
+
+- `formatCurrency` 関数を `src/utils/formatCurrency.ts` として共通化し、重複コードを削除
+- `GrowthChart.vue` の `chartOptions` をリアクティブ依存のない `const` 定数に変更
+- Vuetify コンポーネントの全量インポートを使用コンポーネントの明示的インポートに変更（バンドルサイズ削減）
+- 色定数を `src/constants/colors.ts` に一元管理し、テーマ設定・コンポーネントから参照するよう変更
+- 複数コンポーネントのインラインスタイルを `<style scoped>` の CSS クラスに移行
+
+### Fixed
+
+- `YearlyTable.vue` のテーブルヘッダー背景色をダークテーマと整合する色に修正（`#dbeafe` → `rgba(92, 107, 192, 0.2)`）
+
 ## [0.2.0] - 2026-04-08
 
 ### Changed
@@ -29,5 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI ワークフロー（型チェック・ビルド）
 - Dependabot による依存関係の自動更新設定
 
+[0.2.1]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.2.1
 [0.2.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.2.0
 [0.1.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.1.0
+

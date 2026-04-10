@@ -14,6 +14,7 @@ import {
   Tooltip,
 } from 'chart.js'
 import {useInvestmentStore} from '../stores/investmentStore'
+import {COLORS} from '../constants/colors'
 
 ChartJS.register(
     CategoryScale,
@@ -34,7 +35,7 @@ const chartData = computed(() => ({
     {
       label: '評価額',
       data: store.yearlyData.map((d) => d.totalAssets),
-      borderColor: '#42A5F5',
+      borderColor: COLORS.accent,
       backgroundColor: 'rgba(66, 165, 245, 0.1)',
       borderWidth: 2.5,
       pointRadius: 3,
@@ -45,7 +46,7 @@ const chartData = computed(() => ({
     {
       label: '累計投資額',
       data: store.yearlyData.map((d) => d.totalInvested),
-      borderColor: '#5C6BC0',
+      borderColor: COLORS.primary,
       backgroundColor: 'rgba(92, 107, 192, 0.1)',
       borderWidth: 2.5,
       pointRadius: 3,
@@ -56,7 +57,7 @@ const chartData = computed(() => ({
   ],
 }))
 
-const chartOptions = computed(() => ({
+const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   interaction: {
@@ -73,7 +74,7 @@ const chartOptions = computed(() => ({
       },
     },
     tooltip: {
-      backgroundColor: '#1E2430',
+      backgroundColor: COLORS.surfaceVariant,
       borderColor: 'rgba(92,107,192,0.4)',
       borderWidth: 1,
       titleColor: '#e2e8f0',
@@ -104,7 +105,7 @@ const chartOptions = computed(() => ({
       grid: {color: 'rgba(255,255,255,0.05)'},
     },
   },
-}))
+}
 </script>
 
 <template>

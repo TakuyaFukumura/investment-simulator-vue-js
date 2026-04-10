@@ -152,7 +152,7 @@ watch(
     </v-card-text>
     <v-card-actions class="px-6 pb-6">
       <v-btn
-          :style="{ background: 'linear-gradient(135deg, #5C6BC0, #42A5F5)' }"
+          class="btn-gradient"
           block
           color="primary"
           prepend-icon="mdi-play-circle"
@@ -165,3 +165,9 @@ watch(
     </v-card-actions>
   </v-card>
 </template>
+
+<style scoped>
+.btn-gradient {
+  background: linear-gradient(135deg, rgb(var(--v-theme-primary)), rgb(var(--v-theme-accent))) !important;
+}
+</style>

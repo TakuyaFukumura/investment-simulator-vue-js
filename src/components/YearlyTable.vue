@@ -1,15 +1,8 @@
 <script lang="ts" setup>
 import {useInvestmentStore} from '../stores/investmentStore'
+import {formatCurrency} from '../utils/formatCurrency'
 
 const store = useInvestmentStore()
-
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat('ja-JP', {
-    style: 'currency',
-    currency: 'JPY',
-    maximumFractionDigits: 0,
-  }).format(value)
-}
 </script>
 
 <template>
@@ -35,13 +28,13 @@ function formatCurrency(value: number): string {
         <tr v-for="row in store.yearlyData" :key="row.year">
           <td class="text-center text-medium-emphasis">{{ row.year }}年目</td>
           <td class="text-right">{{ formatCurrency(row.totalInvested) }}</td>
-          <td class="text-right" style="color: #42A5F5">
+          <td class="text-right text-accent">
             +{{ formatCurrency(row.investmentGain) }}
           </td>
           <td class="text-right font-weight-medium">
             {{ formatCurrency(row.totalAssets) }}
           </td>
-          <td class="text-right" style="color: #7E57C2">
+          <td class="text-right text-secondary">
             {{ row.totalInvested > 0 ? ((row.investmentGain / row.totalInvested) * 100).toFixed(1) : '0.0' }}%
           </td>
         </tr>
@@ -53,8 +46,8 @@ function formatCurrency(value: number): string {
 
 <style scoped>
 .yearly-table th {
-  background: #dbeafe !important;
-  color: #0f172a !important;
+  background: rgba(var(--v-theme-primary), 0.2) !important;
+  color: #e2e8f0 !important;
   font-size: 0.8rem !important;
   padding: 10px 16px !important;
   white-space: nowrap;
@@ -67,6 +60,7 @@ function formatCurrency(value: number): string {
 }
 
 .yearly-table tbody tr:hover td {
-  background: rgba(92, 107, 192, 0.08) !important;
+  background: rgba(var(--v-theme-primary), 0.08) !important;
 }
 </style>
+
