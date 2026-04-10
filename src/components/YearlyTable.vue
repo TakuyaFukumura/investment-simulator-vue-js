@@ -46,7 +46,7 @@ const store = useInvestmentStore()
 
 <style scoped>
 .yearly-table th {
-  background: rgba(92, 107, 192, 0.2) !important;
+  background: rgba(var(--v-theme-primary), 0.2) !important;
   color: #e2e8f0 !important;
   font-size: 0.8rem !important;
   padding: 10px 16px !important;
