@@ -13,6 +13,7 @@ interface InvestmentFormValues {
   monthlyAmount: number  // 万円単位
   years: number
   annualRate: number
+  inflationRate: number
   interestType: InvestmentParams['interestType']
 }
 
@@ -36,6 +37,9 @@ function validate(): boolean {
   }
   if (form.value.annualRate < 0 || form.value.annualRate > 50) {
     errors.value.annualRate = '期待利回りは0〜50%で入力してください'
+  }
+  if (form.value.inflationRate < 0 || form.value.inflationRate > 20) {
+    errors.value.inflationRate = 'インフレ率は0〜20%で入力してください'
   }
   if (form.value.initialAmount === 0 && form.value.monthlyAmount === 0) {
     errors.value.initialAmount = '初期投資額を入力するか、毎月積立額を設定してください'
@@ -126,6 +130,21 @@ watch(
               max="50"
               min="0"
               prepend-inner-icon="mdi-percent"
+              step="0.1"
+              type="number"
+              variant="outlined"
+          />
+        </v-col>
+        <v-col cols="12" sm="6">
+          <v-text-field
+              v-model.number="form.inflationRate"
+              :error-messages="errors.inflationRate"
+              density="comfortable"
+              hide-spin-buttons
+              label="インフレ率（年率 %）"
+              max="20"
+              min="0"
+              prepend-inner-icon="mdi-fire"
               step="0.1"
               type="number"
               variant="outlined"

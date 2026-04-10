@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-04-10
+
+### Added
+
+- インフレ率（`inflationRate`）パラメータを追加（デフォルト: 2%）
+- インフレ考慮後の実質資産額（`realTotalAssets`）の計算ロジックを追加
+- 入力フォームにインフレ率入力フィールド（0〜20%、`mdi-fire` アイコン）を追加
+- バリデーションにインフレ率の範囲チェック（0〜20%）を追加
+- 資産推移グラフに「評価額（実質）」折れ線（緑: `#66BB6A`）を追加
+
+### Changed
+
+- 期待利回り（`annualRate`）のデフォルト値を 5% → 6% に変更
+- グラフの「評価額」ラベルを「評価額（名目）」に変更
+- `src/constants/colors.ts` に `success` 色（`#66BB6A`）を追加
+
 ## [0.2.1] - 2026-04-10
 
 ### Changed
@@ -43,6 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI ワークフロー（型チェック・ビルド）
 - Dependabot による依存関係の自動更新設定
 
+[0.3.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.3.0
 [0.2.1]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.2.1
 [0.2.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.2.0
 [0.1.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.1.0

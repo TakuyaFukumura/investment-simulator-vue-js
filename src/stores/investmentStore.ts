@@ -6,6 +6,7 @@ export interface YearlyData {
     investmentGain: number
     totalInvested: number
     totalAssets: number
+    realTotalAssets: number
 }
 
 export interface InvestmentParams {
@@ -13,6 +14,7 @@ export interface InvestmentParams {
     monthlyAmount: number
     years: number
     annualRate: number
+    inflationRate: number
     interestType: 'compound' | 'simple'
 }
 
@@ -21,12 +23,13 @@ export const useInvestmentStore = defineStore('investment', () => {
         initialAmount: 15000000,
         monthlyAmount: 70000,
         years: 40,
-        annualRate: 5,
+        annualRate: 6,
+        inflationRate: 2,
         interestType: 'compound',
     })
 
     const yearlyData = computed<YearlyData[]>(() => {
-        const {initialAmount, monthlyAmount, years, annualRate, interestType} = params.value
+        const {initialAmount, monthlyAmount, years, annualRate, inflationRate, interestType} = params.value
         const rate = annualRate / 100
         const result: YearlyData[] = []
 
@@ -39,11 +42,14 @@ export const useInvestmentStore = defineStore('investment', () => {
                 }
                 const totalInvested = initialAmount + monthlyAmount * 12 * y
                 const investmentGain = totalAssets - totalInvested
+                const inflationFactor = (1 + inflationRate / 100) ** y
+                const realTotalAssets = totalAssets / inflationFactor
                 result.push({
                     year: y,
                     investmentGain,
                     totalInvested,
                     totalAssets,
+                    realTotalAssets,
                 })
             }
         } else {
@@ -64,11 +70,14 @@ export const useInvestmentStore = defineStore('investment', () => {
                 }
                 const investmentGain = initialGain + monthlyContributionGain
                 const totalAssets = totalInvested + investmentGain
+                const inflationFactor = (1 + inflationRate / 100) ** y
+                const realTotalAssets = totalAssets / inflationFactor
                 result.push({
                     year: y,
                     investmentGain,
                     totalInvested,
                     totalAssets,
+                    realTotalAssets,
                 })
             }
         }
