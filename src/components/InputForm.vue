@@ -38,7 +38,11 @@ function validate(): boolean {
   if (form.value.annualRate < 0 || form.value.annualRate > 50) {
     errors.value.annualRate = '期待利回りは0〜50%で入力してください'
   }
-  if (form.value.inflationRate < 0 || form.value.inflationRate > 20) {
+  if (
+    !Number.isFinite(form.value.inflationRate) ||
+    form.value.inflationRate < 0 ||
+    form.value.inflationRate > 20
+  ) {
     errors.value.inflationRate = 'インフレ率は0〜20%で入力してください'
   }
   if (form.value.initialAmount === 0 && form.value.monthlyAmount === 0) {

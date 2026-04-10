@@ -18,6 +18,10 @@ export interface InvestmentParams {
     interestType: 'compound' | 'simple'
 }
 
+function calcRealTotalAssets(nominalTotalAssets: number, inflationRate: number, year: number): number {
+    return nominalTotalAssets / (1 + inflationRate / 100) ** year
+}
+
 export const useInvestmentStore = defineStore('investment', () => {
     const params = ref<InvestmentParams>({
         initialAmount: 15000000,
@@ -42,8 +46,7 @@ export const useInvestmentStore = defineStore('investment', () => {
                 }
                 const totalInvested = initialAmount + monthlyAmount * 12 * y
                 const investmentGain = totalAssets - totalInvested
-                const inflationFactor = (1 + inflationRate / 100) ** y
-                const realTotalAssets = totalAssets / inflationFactor
+                const realTotalAssets = calcRealTotalAssets(totalAssets, inflationRate, y)
                 result.push({
                     year: y,
                     investmentGain,
@@ -70,8 +73,7 @@ export const useInvestmentStore = defineStore('investment', () => {
                 }
                 const investmentGain = initialGain + monthlyContributionGain
                 const totalAssets = totalInvested + investmentGain
-                const inflationFactor = (1 + inflationRate / 100) ** y
-                const realTotalAssets = totalAssets / inflationFactor
+                const realTotalAssets = calcRealTotalAssets(totalAssets, inflationRate, y)
                 result.push({
                     year: y,
                     investmentGain,
