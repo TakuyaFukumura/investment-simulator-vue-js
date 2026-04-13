@@ -33,7 +33,7 @@ const chartData = computed(() => ({
   labels: store.yearlyData.map((d) => `${d.year}年目`),
   datasets: [
     {
-      label: '評価額',
+      label: '評価額（名目）',
       data: store.yearlyData.map((d) => d.totalAssets),
       borderColor: COLORS.accent,
       backgroundColor: 'rgba(66, 165, 245, 0.1)',
@@ -41,6 +41,17 @@ const chartData = computed(() => ({
       pointRadius: 3,
       pointHoverRadius: 6,
       fill: true,
+      tension: 0.3,
+    },
+    {
+      label: '評価額（実質）',
+      data: store.yearlyData.map((d) => d.realTotalAssets),
+      borderColor: COLORS.success,
+      backgroundColor: 'rgba(102, 187, 106, 0.1)',
+      borderWidth: 2.5,
+      pointRadius: 3,
+      pointHoverRadius: 6,
+      fill: false,
       tension: 0.3,
     },
     {
