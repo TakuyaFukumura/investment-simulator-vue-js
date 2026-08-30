@@ -128,9 +128,22 @@ const chartOptions = {
       </div>
     </v-card-title>
     <v-card-text class="px-4 pb-6">
-      <div style="height: 360px; position: relative">
+      <div class="chart-container">
         <Line :data="chartData" :options="chartOptions"/>
       </div>
     </v-card-text>
   </v-card>
 </template>
+
+<style scoped>
+.chart-container {
+  position: relative;
+  height: 360px;
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    height: 280px;
+  }
+}
+</style>
