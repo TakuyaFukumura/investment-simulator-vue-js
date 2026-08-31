@@ -21,7 +21,7 @@ const gainRatio = computed(() => {
     </v-card-title>
     <v-card-text class="px-6 pb-6">
       <v-row>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="3">
           <div class="result-card result-card--primary pa-4 rounded-lg text-center">
             <div class="text-caption text-medium-emphasis mb-1">総投資額</div>
             <div class="text-h6 font-weight-bold text-primary">
@@ -29,15 +29,23 @@ const gainRatio = computed(() => {
             </div>
           </div>
         </v-col>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="3">
           <div class="result-card result-card--accent pa-4 rounded-lg text-center">
-            <div class="text-caption text-medium-emphasis mb-1">最終資産額</div>
+            <div class="text-caption text-medium-emphasis mb-1">最終評価額（名目）</div>
             <div class="text-h6 font-weight-bold text-accent">
               {{ formatCurrency(store.finalAssets) }}
             </div>
           </div>
         </v-col>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="3">
+          <div class="result-card result-card--success pa-4 rounded-lg text-center">
+            <div class="text-caption text-medium-emphasis mb-1">最終評価額（実質）</div>
+            <div class="text-h6 font-weight-bold text-success">
+              {{ formatCurrency(store.finalRealAssets) }}
+            </div>
+          </div>
+        </v-col>
+        <v-col cols="12" sm="3">
           <div class="result-card result-card--secondary pa-4 rounded-lg text-center">
             <div class="text-caption text-medium-emphasis mb-1">運用益（利益率）</div>
             <div class="text-h6 font-weight-bold text-secondary">
@@ -66,5 +74,9 @@ const gainRatio = computed(() => {
   background: rgba(var(--v-theme-secondary), 0.12);
   border: 1px solid rgba(var(--v-theme-secondary), 0.3);
 }
-</style>
 
+.result-card--success {
+  background: rgba(var(--v-theme-success), 0.12);
+  border: 1px solid rgba(var(--v-theme-success), 0.3);
+}
+</style>
