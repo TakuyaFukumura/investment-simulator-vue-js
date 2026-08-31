@@ -1,16 +1,31 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    min-height: 100vh;
+html {
+    min-width: 320px;
+    min-height: 100%;
     background-color: #0D1117;
 }
 
-#app {
+body {
+    margin: 0;
+    min-width: 320px;
     min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% -20%, rgba(92, 107, 192, 0.18), transparent 42rem),
+        #0D1117;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+#app,
+.v-application {
+    min-height: 100vh;
+}
+
+.v-application {
+    background: transparent !important;
 }
 
 .gradient-text {
@@ -21,5 +36,26 @@ html, body {
 }
 
 .card-glow {
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 20px rgba(92, 107, 192, 0.15) !important;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 1.65rem !important;
+        line-height: 1.25;
+    }
+
+    .card-glow .v-card-title {
+        padding-inline: 1rem !important;
+    }
+
+    .card-glow .v-card-text {
+        padding-inline: 1rem !important;
+    }
 }

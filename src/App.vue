@@ -8,12 +8,12 @@ import YearlyTable from './components/YearlyTable.vue'
 <template>
   <v-app>
     <v-main>
-      <v-container class="pa-4 pa-md-6" fluid style="max-width: 1200px">
+      <v-container class="app-container pa-4 pa-md-8" fluid>
         <!-- Header -->
         <div class="text-center mb-8">
           <div class="d-flex align-center justify-center ga-2 mb-2">
             <v-icon color="primary" size="36">mdi-trending-up</v-icon>
-            <h1 class="text-h4 font-weight-bold gradient-text">
+            <h1 class="page-title text-h4 font-weight-bold gradient-text">
               積立投資シミュレーター
             </h1>
           </div>
