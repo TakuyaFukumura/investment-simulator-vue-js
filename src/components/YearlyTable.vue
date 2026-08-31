@@ -13,7 +13,7 @@ const store = useInvestmentStore()
         <span class="text-h6 font-weight-bold">年次データ一覧</span>
       </div>
     </v-card-title>
-    <v-card-text class="px-0 pb-4">
+    <v-card-text class="table-wrapper px-0 pb-4">
       <v-table class="yearly-table" density="compact">
         <thead>
         <tr>
@@ -65,5 +65,9 @@ const store = useInvestmentStore()
 
 .yearly-table tbody tr:hover td {
   background: rgba(var(--v-theme-primary), 0.08) !important;
+}
+
+.table-wrapper {
+  overflow-x: auto;
 }
 </style>

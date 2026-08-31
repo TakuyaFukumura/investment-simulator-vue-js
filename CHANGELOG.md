@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - シミュレーション結果と年次データ表で、名目評価額と実質評価額を分けて表示
 
+## [0.3.1] - 2026-08-31
+
+### Fixed
+
+- Vuetifyのレイアウトを壊していた全体リセットを見直し、レスポンシブ表示を改善
+- グラフの高さと年次データ表の横スクロールを画面幅に合わせて調整
+
 ## [0.3.0] - 2026-04-10
 
 ### Added
@@ -65,6 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI ワークフロー（型チェック・ビルド）
 - Dependabot による依存関係の自動更新設定
 
+[0.3.1]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.3.1
 [0.3.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.3.0
 [0.2.1]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.2.1
 [0.2.0]: https://github.com/TakuyaFukumura/investment-simulator-vue-js/releases/tag/v0.2.0
