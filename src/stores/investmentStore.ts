@@ -89,6 +89,8 @@ export const useInvestmentStore = defineStore('investment', () => {
 
     const finalAssets = computed(() => yearlyData.value.at(-1)?.totalAssets ?? 0)
 
+    const finalRealAssets = computed(() => yearlyData.value.at(-1)?.realTotalAssets ?? 0)
+
     const totalInvested = computed(() => yearlyData.value.at(-1)?.totalInvested ?? 0)
 
     const totalGain = computed(() => finalAssets.value - totalInvested.value)
@@ -101,6 +103,7 @@ export const useInvestmentStore = defineStore('investment', () => {
         params,
         yearlyData,
         finalAssets,
+        finalRealAssets,
         totalInvested,
         totalGain,
         updateParams,

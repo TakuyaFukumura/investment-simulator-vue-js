@@ -20,7 +20,8 @@ const store = useInvestmentStore()
           <th class="text-center" scope="col">年数</th>
           <th class="text-right" scope="col">累計投資額</th>
           <th class="text-right" scope="col">運用益</th>
-          <th class="text-right" scope="col">評価額</th>
+          <th class="text-right" scope="col">評価額（名目）</th>
+          <th class="text-right" scope="col">評価額（実質）</th>
           <th class="text-right" scope="col">利益率</th>
         </tr>
         </thead>
@@ -33,6 +34,9 @@ const store = useInvestmentStore()
           </td>
           <td class="text-right font-weight-medium">
             {{ formatCurrency(row.totalAssets) }}
+          </td>
+          <td class="text-right font-weight-medium text-success">
+            {{ formatCurrency(row.realTotalAssets) }}
           </td>
           <td class="text-right text-secondary">
             {{ row.totalInvested > 0 ? ((row.investmentGain / row.totalInvested) * 100).toFixed(1) : '0.0' }}%
@@ -63,4 +67,3 @@ const store = useInvestmentStore()
   background: rgba(var(--v-theme-primary), 0.08) !important;
 }
 </style>
-
